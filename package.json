@@ -1,6 +1,6 @@
 {
   "name": "slack-map",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generates most popular time zones in Slack account",
   "bin": {
     "slack_map": "./bin/slack_map"
