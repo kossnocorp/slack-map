@@ -2,7 +2,9 @@
 
 Generates most popular time zones in Slack account.
 
-![](http://i.ncrp.co/image/3Z0B3f0d2P36/Screen%20Shot%202015-01-30%20at%2006.35.37.png)
+For example, see [#nomads time zones map](http://nomad-tzs.nocorp.me) ([#nomads - digital nomad chat community](http://hashtagnomads.com/))
+
+![](http://i.ncrp.co/image/363J1Y1U1M1e/Image%202015-01-30%20at%206.55.24%20am.png)
 
 ## Installation
 
