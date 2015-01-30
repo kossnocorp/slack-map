@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var fsExtra = require('node-fs-extra');
+var ejs = require('ejs');
+var getMemberTzs = require('../src/get_member_tzs');
+
+var TOKEN = process.env.SLACK_TOKEN;
+if (!TOKEN) throw "Enviorment variable SLACK_TOKEN must be specified. Get it from "
+
+getMemberTzs(TOKEN, function(tzsData) {
+  try {
+    fsExtra.mkdirSync(process.cwd() + '/slack_map_build');
+  } catch(err) {}
+
+  var tzIds = Object.keys(tzsData.tzs);
+  tzIds.forEach(function(id) {
+    tzsData.tzs[id].opacity = tzsData.tzs[id].count / tzsData.biggestNumber * .85;
+  });
+  tzsData.tzsCount = tzIds.length;
+
+  var templateStream = fs.readFileSync(__dirname + '/../assets/template.html');
+  fs.writeFileSync(
+    process.cwd() + '/slack_map_build/index.html',
+    ejs.render(templateStream.toString(), tzsData)
+  );
+
+  fsExtra.copySync(
+    __dirname + '/../assets/map.png',
+    process.cwd() + '/slack_map_build/map.png'
+  );
+});
+

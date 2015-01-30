@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slack members map</title>
+    <meta name='viewport' content='initial-scale=1.0, user-scalable=no' />
+
+    <style type="text/css">
+      html {
+        height: 100%;
+      }
+      body {
+        font-family: Helvetica, Arial;
+        height: 100%;
+      }
+      body, h1, h2 {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        margin: 20px 0 10px;
+        text-align: center;
+        color: #303030;
+        font-size: 25px;
+      }
+      h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #5C5C5C;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 20px;
+      }
+      .map {
+        width: 1300px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .image {
+        width: 1300px
+      }
+      .zone {
+        position: absolute;
+        top: 1%;
+        bottom: 7.7%;
+        width: 4%;
+        border: 1px solid black;
+        left: 100%;
+        text-align: center;
+        padding-top: 15px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .zone.is-minus-11.is-left {
+        left: 1%;
+        width: 3%;
+      }
+      .zone.is-minus-10 {
+        left: 4.1%;
+      }
+      .zone.is-minus-9 {
+        left: 8.15%;
+      }
+      .zone.is-minus-8 {
+        left: 12.2%;
+      }
+      .zone.is-minus-7 {
+        left: 16.3%;
+      }
+      .zone.is-minus-6 {
+        left: 20.4%;
+      }
+      .zone.is-minus-5 {
+        left: 24.45%;
+      }
+      .zone.is-minus-4 {
+        left: 28.55%;
+      }
+      .zone.is-minus-3 {
+        left: 32.58%;
+      }
+      .zone.is-minus-2 {
+        left: 36.7%;
+      }
+      .zone.is-minus-1 {
+        left: 40.75%;
+      }
+      .zone.is-0 {
+        left: 44.85%;
+      }
+      .zone.is-1 {
+        left: 48.9%;
+      }
+      .zone.is-2 {
+        left: 53%;
+      }
+      .zone.is-3 {
+        left: 57.1%;
+      }
+      .zone.is-4 {
+        left: 61.15%;
+      }
+      .zone.is-5 {
+        left: 65.2%;
+      }
+      .zone.is-6 {
+        left: 69.3%;
+      }
+      .zone.is-7 {
+        left: 73.4%;
+      }
+      .zone.is-8 {
+        left: 77.45%;
+      }
+      .zone.is-9 {
+        left: 81.5%;
+      }
+      .zone.is-10 {
+        left: 85.6%;
+      }
+      .zone.is-11 {
+        left: 89.7%;
+      }
+      .zone.is-12 {
+        left: 93.8%;
+      }
+      .zone.is-minus-11.is-right {
+        left: 97.85%;
+        width: .9%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='stats'>
+      <h1>Most popular time zones</h1>
+      <h2>
+        Map generated using tz data from user list API in Slack.
+        <br />
+        In total there is <%= count %> memebers
+        in <%= tzsCount %>/24 different time zones
+        (<%= noTzCount %> members didn't specified time zone in the profile)
+      </h2>
+    </div>
+    <div class='map'>
+      <img src='./map.png' class='image' />
+      <div class='zone is-minus-11 is-left' style='background: rgba(255, 155, 155, <%= tzs[-11] ? tzs[-11].opacity : 0 %>);'><%= tzs[-11] ? tzs[-11].count : 0 %></div>
+      <div class='zone is-minus-10' style='background: rgba(255, 155, 155, <%= tzs[-10] ? tzs[-10].opacity : 0 %>);'><%= tzs[-10] ? tzs[-10].count : 0 %></div>
+      <div class='zone is-minus-9' style='background: rgba(255, 155, 155, <%= tzs[-9] ? tzs[-9].opacity : 0 %>);'><%= tzs[-9] ? tzs[-9].count : 0 %></div>
+      <div class='zone is-minus-8' style='background: rgba(255, 155, 155, <%= tzs[-8] ? tzs[-8].opacity : 0 %>);'><%= tzs[-8] ? tzs[-8].count : 0 %></div>
+      <div class='zone is-minus-7' style='background: rgba(255, 155, 155, <%= tzs[-7] ? tzs[-7].opacity : 0 %>);'><%= tzs[-7] ? tzs[-7].count : 0 %></div>
+      <div class='zone is-minus-6' style='background: rgba(255, 155, 155, <%= tzs[-6] ? tzs[-6].opacity : 0 %>);'><%= tzs[-6] ? tzs[-6].count : 0 %></div>
+      <div class='zone is-minus-5' style='background: rgba(255, 155, 155, <%= tzs[-5] ? tzs[-5].opacity : 0 %>);'><%= tzs[-5] ? tzs[-5].count : 0 %></div>
+      <div class='zone is-minus-4' style='background: rgba(255, 155, 155, <%= tzs[-4] ? tzs[-4].opacity : 0 %>);'><%= tzs[-4] ? tzs[-4].count : 0 %></div>
+      <div class='zone is-minus-3' style='background: rgba(255, 155, 155, <%= tzs[-3] ? tzs[-3].opacity : 0 %>);'><%= tzs[-3] ? tzs[-3].count : 0 %></div>
+      <div class='zone is-minus-2' style='background: rgba(255, 155, 155, <%= tzs[-2] ? tzs[-2].opacity : 0 %>);'><%= tzs[-2] ? tzs[-2].count : 0 %></div>
+      <div class='zone is-minus-1' style='background: rgba(255, 155, 155, <%= tzs[-1] ? tzs[-1].opacity : 0 %>);'><%= tzs[-1] ? tzs[-1].count : 0 %></div>
+      <div class='zone is-0' style='background: rgba(255, 155, 155, <%= tzs[0] ? tzs[0].opacity : 0 %>);'><%= tzs[0] ? tzs[0].count : 0 %></div>
+      <div class='zone is-1' style='background: rgba(255, 155, 155, <%= tzs[1] ? tzs[1].opacity : 0 %>);'><%= tzs[1] ? tzs[1].count : 0 %></div>
+      <div class='zone is-2' style='background: rgba(255, 155, 155, <%= tzs[2] ? tzs[2].opacity : 0 %>);'><%= tzs[2] ? tzs[2].count : 0 %></div>
+      <div class='zone is-3' style='background: rgba(255, 155, 155, <%= tzs[3] ? tzs[3].opacity : 0 %>);'><%= tzs[3] ? tzs[3].count : 0 %></div>
+      <div class='zone is-4' style='background: rgba(255, 155, 155, <%= tzs[4] ? tzs[4].opacity : 0 %>);'><%= tzs[4] ? tzs[4].count : 0 %></div>
+      <div class='zone is-5' style='background: rgba(255, 155, 155, <%= tzs[5] ? tzs[5].opacity : 0 %>);'><%= tzs[5] ? tzs[5].count : 0 %></div>
+      <div class='zone is-6' style='background: rgba(255, 155, 155, <%= tzs[6] ? tzs[6].opacity : 0 %>);'><%= tzs[6] ? tzs[6].count : 0 %></div>
+      <div class='zone is-7' style='background: rgba(255, 155, 155, <%= tzs[7] ? tzs[7].opacity : 0 %>);'><%= tzs[7] ? tzs[7].count : 0 %></div>
+      <div class='zone is-8' style='background: rgba(255, 155, 155, <%= tzs[8] ? tzs[8].opacity : 0 %>);'><%= tzs[8] ? tzs[8].count : 0 %></div>
+      <div class='zone is-9' style='background: rgba(255, 155, 155, <%= tzs[9] ? tzs[9].opacity : 0 %>);'><%= tzs[9] ? tzs[9].count : 0 %></div>
+      <div class='zone is-10' style='background: rgba(255, 155, 155, <%= tzs[10] ? tzs[10].opacity : 0 %>);'><%= tzs[10] ? tzs[10].count : 0 %></div>
+      <div class='zone is-11' style='background: rgba(255, 155, 155, <%= tzs[11] ? tzs[11].opacity : 0 %>);'><%= tzs[11] ? tzs[11].count : 0 %></div>
+      <div class='zone is-12' style='background: rgba(255, 155, 155, <%= tzs[12] ? tzs[12].opacity : 0 %>);'><%= tzs[12] ? tzs[12].count : 0 %></div>
+    </div>
+  </body>
+</html>
