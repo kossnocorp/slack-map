@@ -9,7 +9,7 @@ Generates most popular time zones in Slack account.
 Node.js is required (use `brew install node` or download from [Node.js website](http://nodejs.org/)):
 
 ```
-npm install -g
+npm install -g slack-map
 ```
 
 ## Usage
