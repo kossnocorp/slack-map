@@ -1,0 +1,5 @@
+{
+  "name": "slack-map",
+  "root": "slack_map_build",
+  "clean_urls": true
+}
