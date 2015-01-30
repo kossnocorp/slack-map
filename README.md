@@ -16,7 +16,7 @@ npm install -g slack-map
 
 ## Usage
 
-Get the Slack token, specify it via enviorment variable and then run the executable:
+[Get the Slack token](https://api.slack.com/web), specify it via enviorment variable (`SLACK_TOKEN`) and then run the executable:
 
 ```
 SLACK_TOKEN=YOUR_TOKEN slack_map
